@@ -8,7 +8,7 @@ public class Main{
         ArrayList <Accounts> AccountList = new ArrayList<>();
         int optionType = 0;
 
-        //Accounts
+        //Accounts already defined because there can be multiple accounts defined in real life.
         Accounts one = new Accounts(1234, 123456789, 0, "Messi");
         Accounts two = new Accounts(4321, 987654321, 0, "Ronaldo");
         Accounts three = new Accounts(2222, 3333, 0, "Neymar");
@@ -32,11 +32,13 @@ public class Main{
         //Boolean variable initialisation to check if the account exists.
         boolean AccExists = false;
 
-        for(int i = 0; i < AccountList.size(); i++) {
-            if ((IDnumber == AccountList.get(i).accountNUMBER) && (Password == AccountList.get(i).pinCODE)) {
+        //interface responses based on user inputs
+        for(int i = 0; i < AccountList.size(); i++){
+            if((IDnumber == AccountList.get(i).accountNUMBER) && (Password == AccountList.get(i).pinCODE)){
 
                 facilities func = new facilities(AccountList.get(i).accountNUMBER, AccountList.get(i).pinCODE, AccountList.get(i).balance, AccountList.get(i).name);
 
+                //intial statements of the interface.
                 System.out.println("Welcome " + AccountList.get(i).name);
                 AccExists = true;
                 System.out.println();
@@ -47,9 +49,11 @@ public class Main{
                 System.out.println("3: MiniStatement");
                 System.out.println("4: Exit");
 
-                while (optionType != 4){
+
+                //switch cases based on user input to print required output.
+                while(optionType != 4){
                     optionType += in.nextInt();
-                    switch (optionType) {
+                    switch(optionType){
                         case 1:
                             System.out.println("Please input the amount you would like to deposit -->");
                             func.deposit(in.nextInt());
